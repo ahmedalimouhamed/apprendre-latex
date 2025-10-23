@@ -1,0 +1,59 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{natbib} 
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{wrapfig}
+
+\geometry{left=3cm, right=2.5cm, top=2.5cm,bottom=2.5cm}
+\onehalfspacing
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+\bibliographystyle{plainnat}
+
+\begin{document}
+	\input{pages/page-garde}
+	
+	\pagenumbering{roman}
+	\setcounter{page}{1}
+	
+	\input{pages/remerciements}
+	\input{pages/resume}
+	
+	\tableofcontents
+	\newpage
+	
+	\listoffigures
+	\newpage
+	
+	\listoftables
+	\newpage
+	
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	
+	\input{pages/introduction}
+	\input{pages/chapitre1}
+	\input{pages/chapitre2}
+	\input{pages/chapitre3}
+	\input{pages/conclusion}
+	
+	\bibliography{references}
+	
+\end{document}

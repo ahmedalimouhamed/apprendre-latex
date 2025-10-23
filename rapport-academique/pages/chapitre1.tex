@@ -1,0 +1,96 @@
+\chapter{Modélisation Mathématique du système}
+\section{Introduction aux modèles probabilistes}
+Dans cette section, nous présentons les fondements mathématiques de cotre approche. considérons un système décrit par un ensemble de variables aléatoires $X_1, X_2, \dots, X_n$.
+
+\subsection{Distribution de probabilité jointe}
+La distribution de probabilité jointe peut être exprimée comme:
+\begin{equation}
+	P(X_1, X_2, \dots, X_n) = \prod_{i=1}^n P(X_i \mid \pi(X_i))
+	\label{eq:joint-distribution}
+\end{equation}
+ou $\pi(X_i)$ représente les parents de $X_i$ dans le graphe bayésien.
+
+\subsection{Théorème de Bayes}
+Le théorème de Bayes fondamental s'écrit : 
+\begin{equation}
+	P(A \mid B) = \frac{p(B \mid A) P(A)}{P(B)}
+	\label{eq:bayes-theorem}
+\end{equation}
+
+\section{Modèle de précision des performances}
+
+\subsection{Fonction objectif}
+Nous cherchons à maximiser la fonction objectif suivante : 
+\begin{equation}
+	\mathcal{L}(\theta) = \mathbb{E}_{x \sim p_{data}[\log p_\theta(x)] - \lambda \Omega(\theta)}
+	\label{eq:objective-function}
+\end{equation}
+
+ou $\theta$ représente les paramètres du modèle, $\lambda$  est le coefficient de régularisation, et $\Omega(\theta)$ est le terme de régularisation.
+
+\subsection{Optimisation par descente de gradient}
+La mise à jour des paramètres suit:
+\begin{equation}
+	\theta_{t+1} = \theta_t - \eta \nabla_\theta \mathcal{L}(\theta_t)
+	\label{eq:gradient-descent}
+\end{equation}
+
+avec $\theta$ le taux d'apprentissage.
+
+\subsection{Équations différentielles dy système}
+Le comportement dynamique est modélisé par :
+\begin{align}
+	\frac{dx}{dt} &= \alpha x - \beta xy \label{eq:lotka-volterra1} \\
+	\frac{dy}{dt} &= \delta xy - \gamma y \label{eq:lotka-volterra2}
+\end{align}
+
+ou $x$ représente la population de proies et $y$ celle de prédateurs.
+
+\section{Analyse de complexité}
+
+\subsection{Complexité temporelle}
+la complexité de notre algorithme est donnée par : 
+\begin{equation}
+	T(n) = O(n \log n) + O(n^2) + O(n^3)
+	\label{eq:time-complexity}
+\end{equation}
+
+\subsection{Borne d'erreur}
+L'erreur d'approximation est bornée par : 
+\begin{equation}
+	\epsilon \leq \frac{C}{\sqrt{n}} + \frac{D}{n^2}
+	\label{eq:error-bound}
+\end{equation}
+
+ou $C$ et $D$ sont des constantes positives.
+
+\begin{table}[H]
+	\centering
+	\caption{Comparaison des complexités algorithmiques}
+	\begin{tabular}{lcccc}
+		\toprule
+		\textbf{Algorithme} & \textbf{Meilleur cas} & \textbf{Cas moyen} & \textbf{Prise cas} & \textbf{Escape} \\
+		\midrule
+		QuickSort & $O(n \log n)$ & $O(n \log n)$ & $O(n^2)$ & $O(\log n)$ \\
+		MergeSort & $O(n \log n)$ & $O(n \log n)$ & $O(n \log n)$ & $O(n)$ \\
+		HapSort & $O(n \log n)$ & $O(n \log n)$ & $O(n \log n)$ & $O(1)$ \\
+		TimeSort & $O(n)$ & $O(n \log n)$ & $O(n \log n)$ & $O(n)$ \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:complexity-comparaison}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

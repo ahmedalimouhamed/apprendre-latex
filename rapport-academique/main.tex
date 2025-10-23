@@ -1,0 +1,47 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+\input{packages}
+\input{config}
+
+\begin{document}
+	\input{pages/page-garde}
+	\cleardoublepage
+	
+	\pagenumbering{roman}
+	\setcounter{page}{2}
+	
+	\input{pages/abstract}
+	\cleardoublepage
+	
+	%tables
+	\tableofcontents
+	\cleardoublepage
+	\listoffigures
+	\cleardoublepage
+	\listoftables
+	\cleardoublepage
+	\listofalgorithms
+	\cleardoublepage
+	
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	
+	\input{pages/introduction}
+	\input{pages/chapitre1}
+	\input{pages/chapitre2}
+	\input{pages/chapitre3}
+	\input{pages/chapitre4}
+	\input{pages/chapitre5}
+	\input{pages/conclusion}
+	
+	\cleardoublepage
+	\bibliography{references}
+	
+	%annexes
+	\cleardoublepage
+	\appendix
+	\input{pages/annexes}
+\end{document}

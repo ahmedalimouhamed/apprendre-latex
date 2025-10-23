@@ -1,0 +1,162 @@
+\chapter{Analyses Statistiques Avancées}
+
+\section{Tests d'hypothèses}
+
+\subsection{Test e Student}
+Pour comparer les moyennes de deux groupes indépendants, nous utilisons le test t de Student:
+
+\begin{equation}
+	t = \frac{\bar{X}_1 - \bar{X}_2}{s_q \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}}
+	\label{eq:student-test}
+\end{equation}
+ou $s_p$ est l'écart-type poolé : 
+\begin{equation}
+	s_p = \sqrt{\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1 + n_2 - 2}}
+	\label{eq:pooled-std}
+\end{equation}
+
+\subsection{Analyse de puissance statistique}
+La puissance du test est donnée par :
+\begin{equation}
+	\text{Puissance} = 1 - \beta = \Phi\left(z_{1-\alpha/2} - \frac{\delta}{\sigma\sqrt(2/n)}\right) + \Phi\left(-z_{1-\alpha/2} - \frac{\delta}{\sigma\sqrt{2/n}}\right)
+	\label{eq:statistical-power}
+\end{equation}
+
+\begin{table}[H]
+	\centering
+	\caption{Résultats des tests statistiques comparatifs}
+	\begin{tabular}{lrrrrrr}
+		\toprule
+		\textbf{Comparaison} & \textbf{t-value} & \textbf{ddl} & \textbf{p-value} & \textbf{IC 95\%} & \textbf{Size} & \textbf{Power} \\
+		\midrule
+		Algo A vs Algo B & 3.45 & 58 & 0.0012 & [0.124, 0.456] & 0.89 & 0.92 \\
+		Algo A vs Algo C & 2.12 & 58 & 0.0387 & [0.023, 0.289] & 0.56 & 0.67 \\
+		Algo B vs Algo C & 1.78 & 58 & 0.0801 & [-0.015, 0.234] & 0.45 & 0.52 \\
+		Notre vs Meilleur & 4.67 & 58 & 0.0001 & [0.234, 0.567] & 1.23 & 0.98 \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:statistical-tests}
+\end{table}
+
+
+\section{Analyses multivariées}
+\subsection{Analyse en composantes principales}
+la protection sur composantes principales s'écrit :
+\begin{equation}
+	Z = XW
+	\label{eq:pca-projection}
+\end{equation}
+ou $w$ est la matrice des vecteurs propres de la matrice de covariance.
+
+\subsection{Équation de l'ellipse de confiance}
+Pour une distribution normale bivariée :
+
+\begin{equation}
+	\frac{(x-\mu_x)^2}{\sigma_x^2} + \frac{(y-\mu)^2}{\sigma_y^2} - 2\rho\frac{(x-\mu_x)(y-\mu_y)}{\sigma_x\sigma_y} = -2\log(1-p)
+	\label{er:confidence-ellipse}
+\end{equation}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			width=0.8\textwidth,
+			height=0.6\textwidth,
+			xlabel={Premiere composante principale (68.2\%)},
+			ylabel={Deuxieme Composante principale (23.7\%)},
+			legend pos=north east,
+			grid=major
+		]
+		
+		\addplot[only marks, mark=*, blue] coordinates {
+			(1.2, 0.8) (1.5, 0.9) (1.1, 0.7) (1.3, 0.6) (1.4, 0.8)
+			(1.6, 0.5) (1.2, 0.9) (1.5, 0.7) (1.3, 0.8) (1.4, 0.6)
+		};
+		
+		\addplot[only marks, mark=square*, red] coordinates {
+			(-0.8, -0.5) (-1.1, -0.6) (-0.9, -0.4) (-1.0, -0.7) (-0.7, -0.5)
+			(-1.2, -0.8) (-0.8, -0.6) (-1.1, -0.7) (-0.9, -0.5) (-1.0, -0.6)
+		};
+		
+		\draw[blue, thick, rotate around={45:(1.35, 073)}] (1.35, 0.73) ellipse (0.4 and 0.2);
+		\draw[red, thick, rotate around={30:(-0.95, -0.59)}] (-0.95, -0.59) ellipse (0.3 and 0.15);
+		
+		\legend{Groupe 1, Groupe 2}
+		\end{axis}
+	\end{tikzpicture}
+	
+	\caption{Analyse de composantes principales avec ellipses de confiance}
+	\label{fig:pca-analysis}
+\end{figure}
+
+\section{Série temporelles et prévisions}
+\subsection{Modèle ARIMA}
+Le modèle ARIMA(p,d,q) s'écrit : 
+\begin{equation}
+	(1 - \sum_{i=1}^p \phi_iB^i)(1 - B)^d X_t = (1 + \sum_{i=1}^q \theta_i B^i) \epsilon_t 
+	\label{eq:arima-model}
+\end{equation}
+
+ou $B$ est l'opérateur de retard.
+
+\subsection{Équation de prévision}
+
+La prévision à l'horizon $h$ est donnée par : 
+
+\begin{equation}
+	\hat{X}_{t+h} = \mathbb{E}[X_{t+h} | X_1, \dots, X_t]
+	\label{eq:forest-equation}
+\end{equation}
+
+\begin{table}[H]
+	\centering
+	\caption{Performance des modèle de prévision}
+	\begin{tabular}{lrrrrr}
+		\toprule
+		\textbf{Modèle} & \textbf{RMSE} & \textbf{MAE} & \textbf{MAPE (\%)} & \textbf{R²} & \textbf{AIC} \\
+		\midrule
+		ARIMA(1,1,1) & 23.45 & 18.67 & 4.23 & 0.892 & 1256.78 \\
+		SARIMA(1,1,1)(1,1,1,12) & 18.92 & 15.23 & 3.45 & 0.934 & 1189.45 \\
+		ETS (A,N,N) & 25.67 & 20.45 & 4.67 & 0.867 & 1345.23 \\
+		Prophet & 20.12 & 16.78 &  3.89 & 0.915 & 1223.56 \\
+		Notre modèle & \textbf{15.34} & \textbf{12.45} & \textbf{2.89} & \textbf{0.956} & \textbf{1123.67} \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:forest-performance}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

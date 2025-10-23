@@ -1,0 +1,43 @@
+\chapter*{Annexes}
+\addcontentsline{toc}{chapter}{Annexes}
+
+\section{Preuves mathématiques}
+
+\subsection{Preuve du théorème principal}
+
+\begin{proof}
+	Considérons la fonction objectif $\mathcal{L}(\theta)$. Par convexité, nous avons : 
+	\begin{align*}
+		\mathcal{L}(\theta^*) - \mathcal{L}(\theta) &\leq \langle \nabla\mathcal{L}(\theta), \theta^* - \theta \rangle \\
+		&\leq \|\nabla\mathcal{L}(\theta)\| \cdot \|\theta^* - \theta\|
+	\end{align*}
+	En utilisant l'hypothèse de Lipschitz, on obtient la borne souhaitée.
+\end{proof}
+
+\section{Données supplémentaires}
+
+\begin{table}[H]
+	\centering
+	\caption{Données brutes des expérimentations}
+	\begin{tabular}{rrrrrrr}
+		\toprule
+		\textbf{Exp} & \textbf{Param1} & \textbf{Param2} & \textbf{Param3} & \textbf{Résultat} & \textbf{Erreur} & \textbf{Temps} \\
+		\midrule
+		1 & 0.1 & 0.5 & 10 & 0.845 & 0.023 & 45.2 \\
+		2 & 0.2 & 0.5 & 10 & 0.856 & 0.021 & 46.7 \\
+		3 & 0.1 & 0.6 & 10 & 0.867 & 0.019 & 47.8 \\
+		4 & 0.2 & 0.6 & 10 & 0.879 & 0.017 & 48.9 \\
+		5 & 0.1 & 0.5 & 20 & 0.891 & 0.015 & 52.3 \\
+		6 & 0.2 & 0.5 & 20 & 0.902 & 0.013 & 53.6 \\
+		7 & 0.1 & 0.6 & 20 & 0.912 & 0.012 & 54.8 \\
+		8 & 0.2 & 0.6 & 20 & 0.923 & 0.010 & 56.1 \\
+		9 & 0.15 & 0.55 & 15 & 0.934 & 0.009 & 49.5 \\
+		10 & 0.15 & 0.55 & 15 & 0.945 & 0.008 & 50.2 \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:raw-data}
+\end{table}
+
+\section{Code source complémentaire}
+
+\lstinputlisting[language=Python, caption=Module de calculs mathématiqus avancés]{code/modele-mathematique.py}

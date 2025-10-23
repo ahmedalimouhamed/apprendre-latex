@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: plainnat.bst
+Database file #1: references.bib
+Warning--entry type for "react2024" isn't style-file defined
+--line 15 of file references.bib
+Warning--entry type for "nodejs2024" isn't style-file defined
+--line 22 of file references.bib
+Warning--to sort, need author or key in react2024
+Warning--to sort, need author or key in nodejs2024
+Warning--empty journal in fielding2000rest
+You've used 4 entries,
+            2773 wiz_defined-function locations,
+            611 strings with 5209 characters,
+and the built_in function-call counts, 1104 in all, are:
+= -- 95
+> -- 20
+< -- 2
++ -- 10
+- -- 6
+* -- 64
+:= -- 146
+add.period$ -- 10
+call.type$ -- 4
+change.case$ -- 13
+chr.to.int$ -- 4
+cite$ -- 13
+duplicate$ -- 69
+empty$ -- 133
+format.name$ -- 8
+if$ -- 243
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 3
+newline$ -- 26
+num.names$ -- 8
+pop$ -- 49
+preamble$ -- 1
+purify$ -- 10
+quote$ -- 0
+skip$ -- 54
+stack$ -- 0
+substring$ -- 10
+swap$ -- 3
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 39
+warning$ -- 3
+while$ -- 6
+width$ -- 0
+write$ -- 50
+(There were 5 warnings)

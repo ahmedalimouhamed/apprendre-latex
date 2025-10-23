@@ -1,0 +1,53 @@
+\geometry{left=3cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+\onehalfspacing
+
+%En-têtes et bpieds de page
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\leftmark}
+\fancyhead[LO]{\rightmark}
+\renewcommand{\headrulewidth}{0.5pt}
+\setlength{\headheight}{14.5pt}
+
+%Formatage des chapitres
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+%Formatage des sections
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}
+
+%configuration des listes
+\setlist[itemize]{leftmargin=*, topsep=2pt}
+\setlist[enumerate]{leftmargin=*, topsep=2pt}
+
+%configuration des algorithmes
+\floatname{algorighm}{Algorithme}
+\renewcommand{\listalgorithmname}{Liste des algorithmes}
+
+%configuration du code
+\lstset{
+	language=Python,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue},
+	commentstyle=\color{green},
+	stringstyle=\color{red},
+	numbers=left,
+	numberstyle=\tiny,
+	frame=single,
+	breaklines=true,
+	showstringspaces=false
+}
+
+%Configuration des références
+\crefname{equation}{équation}{équations}
+\crefname{figure}{figure}{figures}
+\crefname{table}{tableau}{tableaux}
+\crefname{antrithm}{algrithme}{algorithmes}
+
+
+\sisetup{
+	output-decimal-marker = {,},
+	group-digits = false
+}

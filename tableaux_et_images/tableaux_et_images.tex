@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\begin{document}
+	\section{Résultats d'analyse}
+	\begin{table}[h]
+		\centering
+		\caption{Résultat des tests de performance}
+		\begin{tabular}{lccc}
+			\toprule
+			Algorithme & Temps (s) & Mémoire (MB) & précision (\%) \\
+			\midrule
+			Random Forest & 12.3 & 45 & 94.2\\
+			SVM  & 8.7 & 23 & 91.5\\
+			Neural Network & 25.1 & 128 & 96.8 \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{exemple-graphique.jpg}
+		\caption{comparaison des performances}
+	\end{figure}
+		
+\end{document}

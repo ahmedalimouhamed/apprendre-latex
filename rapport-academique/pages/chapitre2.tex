@@ -1,0 +1,88 @@
+\chapter{Méthodologie et Algorithmes}
+
+\begin{algorithm}[H]
+	\caption{Algorithme d'apprentissage adaptatif}
+	\begin{algorithmic}[1]
+		\Procedure{AdaptiveOptimization}{$X, y, \eta_0, \epsilon$}
+			\State $\theta \gets \text{InitialisationAléatoire}()$
+			\State $\eta \gets \eta_0$
+			\State $t \gets 0$
+			\State $\text{loss\_history} \gets []$
+			\While{$t < \text{max\_iterations}$}
+				\State $\text{gradient} \gets nabla\theta \mathcal{L}(\theta)$
+				\State $\theta \gets \theta - \eta \times \text{gradient}$
+				\State $\text{current\_loss} \gets \mathcal{L}(\theta)$
+				\State $\text{loss\_history.append(current\_loss)}$	
+							
+				\If{$t > 10$ \textbf{and} $\text{loss\_history}[t] > \text{loss\_history}[t-5]$}
+					\State $\eta \gets \eta \times 0.5$ \Comment{Réduction du taux d'apprentissage}
+				\EndIf
+				
+				\If{$|\text{gradient}| < \epsilon$}
+					\State \textbf{break} \Comment{Convergence atteinte}
+				\EndIf
+				
+				\State $t \gets t+ 1$
+			\EndWhile
+			
+			\State \Return $\theta$
+		\EndProcedure
+	\end{algorithmic}
+	\label{alg:adaptive-optimization}
+\end{algorithm}
+
+\section{Implémentation Python}
+
+\lstinputlisting[language=Python, caption=Implementation de l'algorithme d'optimisation]{code/algorithme.py}
+
+\begin{table}[H]
+	\centering
+	\caption{Paramètres de l'algorithme d'optimisation}
+	\begin{tabular}{p{6cm}ccp{4cm}}
+		\toprule
+		\textbf{Paramètre} & \textbf{Valeur} & \textbf{Plage} & \textbf{Description} \\
+		\midrule
+		Taux d'apprentissage initial ($\eta_0$) & 0.01 & [100, 5000] & Critère d'arrêt \\
+		Seuil de convergence ($\epsilon$) & $10^{-6}$ & $[10^{-8}, 10^{-4}]$ & Tolérance du gradient \\
+		Facteur de réduction & 0.5 & [0.1, 0.9] & Facteur de réduction de $\eta$ \\
+		Taille du batch & 32 & [16, 128] & Échantillons par itération \\ 
+		\bottomrule
+	\end{tabular}
+	\label{tab:optimization-parameters}
+\end{table}
+
+\section{Architecture du système}
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}[
+		node distance=2cm,
+		block/.style={rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em},
+		line/.style={draw, -latex'}
+	]
+		\node[block] (input) {Couche d'entrée};
+		\node[block, right=of input] (hidden1) {Couche cachée 1};
+		\node[block, right=of hidden1] (hidden2) {Couche cachée 2};
+		\node[block, right=of hidden2] (output) {Couche de sortie}; % Point-virgule ajouté ici
+		
+		\path[line] (input) -- (hidden1);
+		\path[line] (hidden1) -- (hidden2);
+		\path[line] (hidden2) -- (output);
+	\end{tikzpicture}
+	
+	\caption{Architecture en couches du réseau de neurones}
+	\label{fig:neural-architecture}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+

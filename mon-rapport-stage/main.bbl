@@ -1,0 +1,28 @@
+\begin{thebibliography}{4}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[nod(2024)]{nodejs2024}
+Node.js documentation, 2024.
+\newblock URL \url{https://nodejs.org}.
+
+\bibitem[rea(2024)]{react2024}
+React documentation, 2024.
+\newblock URL \url{https://react.dev}.
+
+\bibitem[Fielding(2000)]{fielding2000rest}
+Roy~Thomas Fielding.
+\newblock Architectural styles and the design of network-based software
+  architectures.
+\newblock 2000.
+
+\bibitem[Martin(2017)]{martin2017clean}
+Robert~C. Martin.
+\newblock \emph{Clean Architecture: A Craftsman's Guide to Software Structure
+  and Design}.
+\newblock Prentice Hall, 2017.
+
+\end{thebibliography}
